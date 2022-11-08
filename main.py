@@ -28,12 +28,12 @@ def fileInter():
 			if letter == '>':
 				point += 1
 				if point > 8:
-					point = 1
+					point = 8
 
 			if letter == '<':
 				point = point - 1
 				if point < 1:
-					point = 8
+					point = 1
 
 			## Adding and subtracting
 			if letter == '+':
