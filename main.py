@@ -78,9 +78,7 @@ def fileCompile():
 		else:
 			x = int(i, 2)
 			output.append(x.to_bytes(1, "big").decode())
-			print(i)
 
 	print(''.join(output))
-	print(output)
 
 fileLoad()
