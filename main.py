@@ -1,3 +1,9 @@
+## BrainBin by Pooky,
+## < > to move pointer
+## , to push to compiler
+## ; to move to new line
+## . to end and run code
+
 ## Declare needed libs and vars
 import os
 array = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -10,7 +16,7 @@ def fileLoad():
 	list = os.listdir()
 
 	for i in list:
-		if i.endswith('.bf'):
+		if i.endswith('.bbin'):
 			file = i
 		else:
 			pass
@@ -54,6 +60,10 @@ def fileInter():
 			if letter == ',':
 				byte.append(''.join(str(i) for i in array))
 
+			## New line identifier
+			if letter == ';':
+				byte.append('\n')
+
 			## Running compiler
 			if letter == '.':
 				fileCompile()
@@ -62,9 +72,15 @@ def fileCompile():
 	output = []
 
 	for i in byte:
-		x = int(i, 2)
-		output.append(x.to_bytes(x.bit_length() + 7 // 8, "big").decode())
+		if i == '\n':
+			output.append(i)
+
+		else:
+			x = int(i, 2)
+			output.append(x.to_bytes(1, "big").decode())
+			print(i)
 
 	print(''.join(output))
+	print(output)
 
 fileLoad()
